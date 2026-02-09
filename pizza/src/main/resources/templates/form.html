@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<!--This uses pizzaorder (object) and relies on  pizza service for the logic -->
 <head>
     <meta charset="UTF-8">
     <title>Order some pizza bro</title>
@@ -17,9 +17,9 @@
     <label>How big?</label>
     <label>
         <select th:field="*{size}" required>
-            <option value="SMALL">Small (8.00)</option>
-            <option value="MEDIUM">Medium (10.00)</option>
-            <option value="LARGE">Large (12.00)</option>
+            <option value="small">Small (8.00)</option>
+            <option value="medium">Medium (10.00)</option>
+            <option value="large">Large (12.00)</option>
         </select>
     </label>
 
