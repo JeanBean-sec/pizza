@@ -25,7 +25,7 @@ public class pizzaservice {
         double firsttotal = addedprice * p.getQuantity();
 
         //discount price
-        double discount = (p.getQuantity() > 3) ? firsttotal - p.getQuantity() * 0.10 : 0.0;
+        double discount = (p.getQuantity() > 3) ? firsttotal * 0.10 : 0.0;
 
         //tax
         double delivery = p.isDelivery() ? 3.99 : 0.0;
