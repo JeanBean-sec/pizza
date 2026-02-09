@@ -61,6 +61,12 @@
         <input type="radio" th:field="*{delivery}" th:value="true"/> sure
     </label>
 
+    <label>Address (if delivery selected)</label>
+    <label>
+        <textarea th:field="*{deliveryAddress}" placeholder="enter your address.."></textarea>
+    </label>
+
+    <button type="submit">Order?</button>
 </form>
 
 
