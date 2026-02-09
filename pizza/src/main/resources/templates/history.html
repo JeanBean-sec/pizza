@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Past Orders</title>
+</head>
+
+
+<body>
+<h1>Past Orders</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Time</th>
+    <th>Customer</th>
+    <th>Pizza</th>
+    <th>Total</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <tr th:each="order : ${orders}">
+      <td th:text="${order.id}"></td>
+      <td th:text="${#temporals.format(order.orderTime)}"></td>
+      <td th:text="${order.customerName}"></td>
+      <td>
+        <span th:text="${order.quantity}"></span> x <span th:text="${order.size}"></span>
+        (<span th:text="${order.crust}"></span>)
+      </td>
+      <td th:text="${#numbers.formatDecimal(order.total, 1,2)}"></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<a href="/">Order another pizza</a>
+</body>
+</html>
