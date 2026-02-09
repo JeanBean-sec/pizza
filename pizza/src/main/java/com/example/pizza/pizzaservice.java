@@ -2,6 +2,7 @@ package com.example.pizza;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,22 @@ public class pizzaservice {
         //discount price
         double discount = (p.getQuantity() > 3) ? firsttotal - p.getQuantity() * 0.10 : 0.0;
 
+        //tax
+        double delivery = p.isDelivery() ? 3.99 : 0.0;
+        double tax = (firsttotal - discount)*0.13;
 
+        p.setId(id++);
+        p.setSubtotal(firsttotal);
+        p.setDiscount(discount);
+        p.setTax(tax);
+        p.setTotal(firsttotal-discount+tax+delivery);
+        p.setOrderTime(LocalDateTime.now());
+
+        history.add(p);
+
+    }
+
+    public List<pizzaorder> getOrders() {
+        return history;
     }
 }
