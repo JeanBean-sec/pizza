@@ -14,7 +14,7 @@ public class pizzacontroller {
         this.pizzaorderservice = pizzaorderservice;
     }
 
-    @GetMapping("/")
+    @GetMapping("/") //this is where you make the order
     public String showHomePage(Model model)
     {
         model.addAttribute("pizzaorder",new pizzaorder());
@@ -25,7 +25,7 @@ public class pizzacontroller {
         model.addAttribute("orders",pizzaorderservice.getOrders());
         return "history";
     }
-    @PostMapping("/order")
+    @PostMapping("/order") //this is after order is made
     public String placeOrder(@ModelAttribute pizzaorder p, Model model)
     {
         pizzaorderservice.makeorder(p);
