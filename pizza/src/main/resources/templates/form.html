@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,64 @@
 </head>
 
 <body>
-<h1>In here, you order pizza, nothing else</h1>
+<h1>Place an order! ^_^</h1>
+<form th:action="@{/order}" th:object="${pizzaorder}" method="post">
+    <label>Name:</label>
+    <label>
+        <input type="text" th:field="*{customerName}" required/>
+    </label>
+
+    <label>How big?</label>
+    <label>
+        <select th:field="*{size}" required>
+            <option value="SMALL">Small (8.00)</option>
+            <option value="MEDIUM">Medium (10.00)</option>
+            <option value="LARGE">Large (12.00)</option>
+        </select>
+    </label>
+
+    <label>How thicc?</label>
+    <label>
+        <select th:field="*{crust}" required>
+            <option value="THIN">Thin</option>
+            <option value="REGULAR">Regular</option>
+            <option value="THICK">Thick</option>
+        </select>
+    </label>
+
+    <fieldset>
+        <legend>Toppings (all 1.25)</legend>
+        <label>
+            <input type="checkbox" th:field="*{toppings}" value="PEPPERONI"/>
+        </label>Pepperoni
+        <label>
+            <input type="checkbox" th:field="*{toppings}" value="OLIVES"/>
+        </label> Olives
+        <label>
+            <input type="checkbox" th:field="*{toppings}" value="MUSHROOMS" />
+        </label> Mushrooms
+        <label>
+            <input type="checkbox" th:field="*{toppings}" value="PEPPERS" />
+        </label> Peppers
+    </fieldset>
+
+    <label>How many?</label>
+    <label>
+        <input type="number" th:field="*{quantity}" min="1" max="10" required/>
+    </label>
+
+    <label>Delivery?</label>
+    <label>
+        <input type="radio" th:field="*{delivery}" th:value="false" checked/> nope
+    </label>
+    <label>
+        <input type="radio" th:field="*{delivery}" th:value="true"/> sure
+    </label>
+
+</form>
+
+
+
 </body>
 
 </html>
